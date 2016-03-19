@@ -2,11 +2,25 @@ if GetObjectName(GetMyHero()) ~= "Yorick" then
 	return 
 end
 
+local ver = "0.01"
+
+function AutoUpdate(data)
+    if tonumber(data) > tonumber(ver) then
+        PrintChat("New version found! " .. data)
+        PrintChat("Downloading update, please wait...")
+        DownloadFileAsync("https://raw.githubusercontent.com/gosscript/Yorick/master/Yorick.lua", SCRIPT_PATH .. "Yorick.lua", function() PrintChat("Update Complete, please 2x F6!") return end)
+    else
+        PrintChat("No updates found, Simple Yorick Loaded!")
+    end
+end
+
+GetWebResultAsync("https://raw.githubusercontent.com/gosscript/Yorick/master/Yorick.version", AutoUpdate)
+
 require('Inspired')
 
 local manaQ = GetCastMana(myHero, _Q, GetCastLevel(myHero,_Q))
 local manaW = GetCastMana(myHero, _W, GetCastLevel(myHero,_W))
-local manaR = GetCastMana(myHero, _E, GetCastLevel(myHero,_E))
+local manaE = GetCastMana(myHero, _E, GetCastLevel(myHero,_E))
 
 local YorickMenu = MenuConfig("Yorick", "Yorick")
 
@@ -23,7 +37,7 @@ YorickMenu.Combo:Boolean("E", "Use E", true)
 
 local manaQ = GetCastMana(myHero, _Q, GetCastLevel(myHero,_Q))
 local manaW = GetCastMana(myHero, _W, GetCastLevel(myHero,_W))
-local manaR = GetCastMana(myHero, _E, GetCastLevel(myHero,_E))
+local manaE = GetCastMana(myHero, _E, GetCastLevel(myHero,_E))
 
 
 
