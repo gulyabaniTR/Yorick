@@ -53,7 +53,7 @@ OnTick(function(myHero)
     local target = GetCurrentTarget()
 	
 	
-    if  GetCurrentMana(myHero) > manaQ + manaW + manaR and IOW:Mode() == "Combo" then
+    if  GetCurrentMana(myHero) > manaQ + manaW + manaE and IOW:Mode() == "Combo" then
 	
 	
     	if YorickMenu.Combo.Q:Value() and Ready(_Q) and ValidTarget(target, 175) then  
